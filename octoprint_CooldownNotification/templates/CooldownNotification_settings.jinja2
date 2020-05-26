@@ -1,0 +1,34 @@
+<form class="form-horizontal">
+	<div class="control-group">
+		<label class="control-label">{{ _('Enabled') }}</label>
+		<div class="controls">
+			<input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.CooldownNotification.Enabled">
+		</div>	
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">{{ _('Temperature Threshold') }}</label>
+		<div class="controls">
+			<input type="number" min="0" max="100" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.CooldownNotification.Threshold">
+			<span class="add-on">&deg;C</span>
+		</div>
+
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">{{ _('GCODE to Execute') }}</label>
+		<div class="controls">
+			<textarea rows="10" class="block" id="settings_plugin_CooldownNotification_GCODE" data-bind="value: settingsViewModel.settings.plugins.CooldownNotification.GCODE"></textarea>
+		</div>
+	</div>
+	
+
+	<div class="control-group">
+		<div class="control-group">
+			<button class="btn btn-primary" data-bind="click: function() { testNow() }, css: {disabled: !isReady() || inProgress()}, disable: !isReady() || inProgress()">Test Now</button>
+			&nbsp;&nbsp;<i class="fa fa-spinner fa-spin" data-bind="enabled:!inProgress(), css: {disabled: inProgress()}, visible: inProgress()"></i>
+			<span style="color:red" data-bind="visible: !isReady()"><small>Printer not Ready!</small>
+			</span>
+		</div>
+	</div>
+</form>
