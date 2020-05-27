@@ -2,7 +2,7 @@
 layout: plugin
 
 id: CooldownNotification
-title: OctoPrint-CooldownNotification
+title: CooldownNotification
 description: A plugin to execute gcode commands when the print bed cools to a certain temperature
 author: George McCauley
 license: AGPLv3
@@ -19,11 +19,6 @@ tags:
 - notification
 - cooldown
 
-screenshots:
-- url: /assets/img/plugins/CooldownNotification/settings.png
-  alt: Settings
-  caption: Settings
-
 featuredimage: /assets/img/plugins/CooldownNotification/settings.png
 
 compatibility:
@@ -38,6 +33,12 @@ compatibility:
 
 ---
 
+# CooldownNotification
+
 This plugin is designed to execute gcode commands when the print bed cools to a certain temperature.
 
 The intended usage is to utilize the M300 gcode to alert that the bed has cooled and it's safe to remove prints printed in PETG.
+
+## Settings
+
+![CooldownNotification Settings](/assets/img/plugins/CooldownNotification/settings.png)
