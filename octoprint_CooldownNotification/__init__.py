@@ -71,8 +71,8 @@ class CooldownnotificationPlugin(octoprint.plugin.SettingsPlugin,
 			notify_events = ['PrintFailed', 'PrintDone']
 			
 			if event in notify_events:
-				self._logger.info("Print Ended, Watching Heatbed Temp")
 				self._logger.debug("Received Event: " + event)
+				self._logger.info("Print Ended, Watching Heatbed Temp")
 				self.inProgress = True
 				self._plugin_manager.send_plugin_message(self._identifier, dict(action="startTimer"))
 				self._TempTimer = RepeatedTimer(5, self.checkTemp, run_first=True)
@@ -86,6 +86,8 @@ class CooldownnotificationPlugin(octoprint.plugin.SettingsPlugin,
 			self._logger.debug("Heatbed Temp: " + str(bedTemp))
 			if bedTemp <= self._settings.get(["Threshold"]):
 				self._logger.debug("Heatbed Temp Reached Threshold")
+				self._logger.debug("Heatbed Temp: " + str(bedTemp) + "   Type: " + str(type(bedTemp).__name__))
+				self._logger.debug("Heatbed Temp: " + str(self._settings.get(["Threshold"])) + "   Type: " + str(type(self._settings.get(["Threshold"])).__name__))
 				self.doExecute(self._settings.get(["GCODE"]))
 				self._TempTimer.cancel()
 
