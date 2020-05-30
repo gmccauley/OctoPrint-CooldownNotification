@@ -32,8 +32,10 @@ The GCODE that is executed when the temperature threshold is reached
 - Threshold saved as string which causes immediate trigging of GCODE after finished print
 
 
+
 **[v0.1.1]** - 27 May 2020
 - Updated Python Compatibility
+
 
 
 **[v0.1.0]** - 26 May 2020
