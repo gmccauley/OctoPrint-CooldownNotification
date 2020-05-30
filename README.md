@@ -26,8 +26,14 @@ The GCODE that is executed when the temperature threshold is reached
 ![CooldownNotification](octoprint_CooldownNotification/static/img/settings.png?raw=true)
 
 ## Changelog:
+**[v0.1.2]** - 27 May 2020
+**Fixed**
+- Threshold saved as string which causes immediate trigging of GCODE after finished print
+
+
 **[v0.1.1]** - 27 May 2020
 - Updated Python Compatibility
+
 
 **[v0.1.0]** - 26 May 2020
 - Initial Release

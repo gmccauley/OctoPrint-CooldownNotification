@@ -32,7 +32,7 @@ class CooldownnotificationPlugin(octoprint.plugin.SettingsPlugin,
 	def get_settings_defaults(self):
 		return dict(
 			Enabled=False,
-			Threshold=40,
+			Threshold='40',
 			GCODE=""
 		)
 
@@ -83,11 +83,12 @@ class CooldownnotificationPlugin(octoprint.plugin.SettingsPlugin,
 	def checkTemp(self):
 		if 'bed' in self._printer.get_current_temperatures():
 			bedTemp = self._printer.get_current_temperatures()['bed']['actual']
+			threshold = int(self._settings.get(["Threshold"]))
 			self._logger.debug("Heatbed Temp: " + str(bedTemp))
-			if bedTemp <= self._settings.get(["Threshold"]):
+			if bedTemp <= threshold:
 				self._logger.debug("Heatbed Temp Reached Threshold")
 				self._logger.debug("Heatbed Temp: " + str(bedTemp) + "   Type: " + str(type(bedTemp).__name__))
-				self._logger.debug("Heatbed Temp: " + str(self._settings.get(["Threshold"])) + "   Type: " + str(type(self._settings.get(["Threshold"])).__name__))
+				self._logger.debug("Threshold: " + str(threshold) + "   Type: " + str(type(threshold).__name__))
 				self.doExecute(self._settings.get(["GCODE"]))
 				self._TempTimer.cancel()
 
