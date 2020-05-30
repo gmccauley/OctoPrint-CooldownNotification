@@ -27,6 +27,7 @@ The GCODE that is executed when the temperature threshold is reached
 
 ## Changelog:
 **[v0.1.2]** - 27 May 2020
+
 **Fixed**
 - Threshold saved as string which causes immediate trigging of GCODE after finished print
 
